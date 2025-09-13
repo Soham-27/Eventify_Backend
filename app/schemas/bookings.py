@@ -16,10 +16,16 @@ class BookingCreate(BookingBase):
 class BookingUpdate(BaseModel):
     status: Optional[str] = None
 
-class BookingOut(BookingBase):
+class BookingOut(BaseModel):
     id: uuid.UUID
-    created_at: datetime
-
+    event_id:uuid.UUID
+    event_name:str
+    venue_name:str
+    start_time:datetime
+    end_time:datetime
+    seats:List[str]
+    total_amount:Decimal
+    created_at:datetime
     model_config = {
         "arbitrary_types_allowed": True
     }
