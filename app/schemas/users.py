@@ -39,4 +39,3 @@ class UserWithToken(UserOut):
 class UserMe(BaseModel):
     user_id: uuid.UUID
     role: str
-    email: EmailStr

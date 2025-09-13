@@ -39,3 +39,4 @@ def upgrade():
 def downgrade():
     op.drop_column('events', 'is_active')
     op.drop_column('events', 'default_price')
+

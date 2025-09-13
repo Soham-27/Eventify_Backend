@@ -4,25 +4,34 @@ from typing import List
 from app.db.deps import get_db
 from app.middleware.authenticated import get_current_user
 from app.schemas.bookings import SeatBookingRequest, CancelBookingRequest, BookingOut
-from app.crud.bookings import book_seats_with_lock, get_bookings_by_user
+from app.processor.booking_processor import BookingProcessor
 
 router = APIRouter()
 
 @router.post("/book", status_code=201)
 async def book_seats_api(payload: SeatBookingRequest, db: AsyncSession = Depends(get_db), current_user: dict = Depends(get_current_user)):
+    """Book seats for an event"""
     try:
-        result = await book_seats_with_lock(db, str(payload.event_id), current_user["user_id"], [str(s) for s in payload.seat_ids])
+        result = await BookingProcessor.book_seats_with_lock(db, str(payload.event_id), current_user["user_id"], [str(s) for s in payload.seat_ids])
         return result
-    except Exception as e:
+    except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 
 @router.post("/cancel", status_code=200)
 async def cancel_booking_api(payload: CancelBookingRequest, db: AsyncSession = Depends(get_db), current_user: dict = Depends(get_current_user)):
-    ok = await cancel_booking_and_release(db, str(payload.booking_id))
-    if not ok:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Booking not found")
-    return {"message": "Booking cancelled and seats released"}
+    """Cancel a booking and release seats"""
+    try:
+        ok = await BookingProcessor.cancel_booking_and_release(db, str(payload.booking_id))
+        if not ok:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Booking not found")
+        return {"message": "Booking cancelled and seats released"}
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 
 # @router.get("/debug/redis-locks")
@@ -46,4 +55,10 @@ async def cancel_booking_api(payload: CancelBookingRequest, db: AsyncSession = D
 
 @router.get("/get-bookings-by-user", response_model=List[BookingOut])
 async def get_bookings_by_user_api(db: AsyncSession = Depends(get_db), current_user: dict = Depends(get_current_user)):
-    return await get_bookings_by_user(db, current_user["user_id"])
+    """Get all bookings for the current user"""
+    try:
+        return await BookingProcessor.get_bookings_by_user(db, current_user["user_id"])
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
