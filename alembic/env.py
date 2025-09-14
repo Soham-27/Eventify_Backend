@@ -10,6 +10,7 @@ import app.models.seats
 import app.models.event_seats
 import app.models.bookings
 import app.models.booking_seats
+import app.models.payments
 # Alembic Config
 config = context.config
 fileConfig(config.config_file_name)

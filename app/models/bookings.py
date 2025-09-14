@@ -15,5 +15,5 @@ class Booking(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
     
     __table_args__ = (
-        CheckConstraint("status IN ('CONFIRMED', 'CANCELLED')", name='check_booking_status'),
+        CheckConstraint("status IN ('PENDING', 'CONFIRMED', 'CANCELLED')", name='check_booking_status'),
     )

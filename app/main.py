@@ -5,6 +5,7 @@ from app.api.v1.venues import router as venues_router  # <-- import router
 from app.api.v1.event_seats import router as event_seats_router  # <-- import router
 from app.api.v1.bookings import router as bookings_router 
 from app.api.v1.analytics import router as analytics_router  # <-- import router
+from app.api.v1.payments import router as payments_router  # <-- import router
 
 app = FastAPI(title="FastAPI Monolith (Async)")
 
@@ -15,3 +16,4 @@ app.include_router(events_router, prefix="/events", tags=["events"])
 app.include_router(event_seats_router, prefix="/event-seats", tags=["event-seats"])
 app.include_router(bookings_router, prefix="/bookings", tags=["bookings"])
 app.include_router(analytics_router, prefix="/analytics", tags=["analytics"])
+app.include_router(payments_router, prefix="/payments", tags=["payments"])
