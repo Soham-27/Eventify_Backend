@@ -162,10 +162,25 @@ docker-compose exec postgres psql -U postgres -d bookmyevent
 
 ## 📚 API Documentation
 
+### Interactive Documentation
+
 Once the application is running, you can access:
 
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
+
+### Comprehensive API Reference
+
+For detailed API documentation with examples, request/response schemas, and complete endpoint descriptions, see:
+
+**[📖 Complete API Documentation](./API_DOCUMENTATION.md)**
+
+This comprehensive guide includes:
+- **User APIs** - Authentication, event discovery, booking management
+- **Admin APIs** - Event/venue management, analytics, seat pricing
+- **Request/Response Examples** - JSON examples for all endpoints
+- **Authentication Guide** - JWT token usage and role-based access
+- **Error Handling** - Common error codes and troubleshooting
 
 ### Available Endpoints
 
