@@ -7,7 +7,7 @@ from app.api.v1.bookings import router as bookings_router
 from app.api.v1.analytics import router as analytics_router  # <-- import router
 from app.api.v1.payments import router as payments_router  # <-- import router
 
-app = FastAPI(title="FastAPI Monolith (Async)")
+app = FastAPI(title="Eventify Backend")
 
 app.include_router(users_router, prefix="/users", tags=["users"])
 app.include_router(venues_router, prefix="/venues", tags=["venues"])
