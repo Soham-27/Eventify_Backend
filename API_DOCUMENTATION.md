@@ -901,20 +901,3 @@ DELETE /bookings/debug/clear-all-locks
 }
 ```
 
----
-
-## Rate Limiting
-
-Currently, there are no rate limits implemented. Consider implementing rate limiting for production use.
-
----
-
-## Webhooks
-
-Webhook functionality is not currently implemented but can be added for payment confirmations and booking updates.
-
----
-
-## Support
-
-For API support and questions, please refer to the interactive documentation at `/docs` or `/redoc` endpoints.
