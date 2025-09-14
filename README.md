@@ -207,33 +207,3 @@ alembic upgrade head
 # Rollback migration
 alembic downgrade -1
 ```
-
-## 🧪 Testing
-
-```bash
-# Run tests (if available)
-python -m pytest
-
-# Run specific test file
-python test_booking_flow.py
-```
-
-## 📝 Development Notes
-
-- The application uses async/await patterns throughout
-- Database operations are handled through the CRUD layer
-- Business logic is separated into processor and service layers
-- All API endpoints are versioned under `/api/v1/`
-- Authentication middleware is available for protected routes
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
