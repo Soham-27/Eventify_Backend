@@ -9,7 +9,6 @@ from app.models.bookings import Booking
 from app.models.event_seats import EventSeat
 from app.models.booking_seats import BookingSeat
 from app.schemas.payments import PaymentCreate, PaymentUpdate
-from app.crud.payments import create_payment, get_payment_by_id, update_payment
 from app.core.redis import redis
 from decimal import Decimal
 import uuid
