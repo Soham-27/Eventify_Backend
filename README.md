@@ -13,6 +13,42 @@ A FastAPI-based event booking system with PostgreSQL database, Redis caching, an
 - **User Management**: User registration and authentication
 - **Database Migrations**: Alembic for database schema management
 
+---
+
+## 🌐 Live Backend & Demo
+- 🔗 **Backend API (Deployed on Render):** [eventify-backend-lj1g.onrender.com](https://eventify-backend-lj1g.onrender.com/)  
+  👉 You can test routes and view API docs at `/docs`.
+
+- 🎥 **Demo Video:** [Watch Here](https://drive.google.com/file/d/1Jzop--SmvikzlHhA5dcrd9rnoUc7wA7O/view?usp=sharing)
+
+
+---
+
+## 🏗️ System Architecture
+
+<p align="center">
+  <img src="./pictures/system_architecture.png" alt="System Architecture" width="700"/>
+</p>
+
+---
+
+## 🗄️ Database Design
+
+<p align="center">
+  <img src="./pictures/db_design.jpeg" alt="Database Design" width="700"/>
+</p>
+
+---
+
+## 🔄 Booking Workflow
+
+<p align="center">
+  <img src="./pictures/wrorkflow.png" alt="Booking Workflow" width="700"/>
+</p>
+
+---
+
+
 ## 📁 Project Structure
 
 ```
@@ -29,7 +65,6 @@ BookMyEvent/
 │   ├── core/             # Core configuration
 │   │   ├── config.py
 │   │   └── redis.py
-│   ├── crud/             # Database operations
 │   ├── db/               # Database configuration
 │   ├── middleware/       # Custom middleware
 │   ├── models/           # SQLAlchemy models
