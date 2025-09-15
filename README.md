@@ -1,4 +1,4 @@
-# BookMyEvent API
+# Eventify
 
 A FastAPI-based event booking system with PostgreSQL database, Redis caching, and comprehensive booking management features.
 
